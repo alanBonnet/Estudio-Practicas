@@ -105,6 +105,7 @@ for(let llavecita in user){
     console.log(llavecita)
 } */
 
+/* // Tarea de calculo 3
 let prodAlgodon = {
     pirane: 420,
     laishi: 100,
@@ -115,4 +116,5 @@ let sum = 0;
 for(let i in prodAlgodon){
     sum += prodAlgodon[i]
 }
-console.log(sum)
+console.log(sum) */
+
