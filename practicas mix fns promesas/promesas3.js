@@ -24,40 +24,57 @@
 const retrasar = milisegundos => new Promise(resolve => setTimeout(resolve, milisegundos));
 
 // Función que retorna los datos de provincias
-function obtenerPcias() {
-    // await retrasar(1800);
+// function obtenerPcias() {
+//     // await retrasar(1800);
 
-    const consulta = fetch('');
+//     const consulta = fetch('');
+// }
+const obtenerPcias = async (provincia = "") => {
+    try {
+        (provincia.trim())
+        ?provincia =`?nombre=${provincia}`
+        : provincia =`?aplanar=true`
+
+        await retrasar(1800);
+        const consulta = await fetch(`https://apis.datos.gob.ar/georef/api/provincias${provincia}`)
+            .then(res => res.json())
+            .then(respuestaObject => respuestaObject.provincias)
+        console.log(consulta)
+    } catch (error) {
+        console.log(error)
+    }
+    
 }
+
 //----------------------------------------------------------------------------
 // Función que retorna los datos de departamentos
-function obtenerDptos() {
-    // await retrasar(1391);
+// function obtenerDptos() {
+//     // await retrasar(1391);
 
-    const consulta = fetch('');
-}
+//     const consulta = fetch('');
+// }
 //----------------------------------------------------------------------------
 // Función que retorna los datos de localidades
-function obtenerLocalidades() {
-    // await retrasar(900);
+// function obtenerLocalidades() {
+//     // await retrasar(900);
 
-    const consulta = fetch('');
-}
+//     const consulta = fetch('');
+// }
 
 
 
 //----------------------------------------------------------------------------
 // Funcion para obtener todos los datos
-function consultarDatos() {
-    const provincias = obtenerPcias();
-    const dptos = obtenerDptos();
-    const localidades = obtenerLocalidades();
+// function consultarDatos() {
+//     const provincias = obtenerPcias();
+//     const dptos = obtenerDptos();
+//     const localidades = obtenerLocalidades();
 
-    console.log(provincias);
-    console.log(dptos);
-    console.log(localidades);
-}
+//     console.log(provincias);
+//     console.log(dptos);
+//     console.log(localidades);
+// }
 
-consultarDatos();
+// consultarDatos();
 
 //----------------------------------------------------------------------------
