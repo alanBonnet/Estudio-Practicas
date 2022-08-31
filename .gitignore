@@ -1,0 +1,4 @@
+node_modules
+conexion a mongo/index.js
+package-lock.json
+package.json
