@@ -1,4 +1,4 @@
 # Este es un repo de Trabajos Practicos
 
-
-[Este es la doc del tema Promesas/Async=>await] ./practica promesas/promesas.md
+#### Carpetas
+* [Promesas Async await](https://github.com/alanBonnet/Estudio-Practicas/blob/main/practica%20promesas/promesas.md).
