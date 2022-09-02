@@ -29,7 +29,7 @@ const retrasar = milisegundos => new Promise(resolve => setTimeout(resolve, mili
 
 //     const consulta = fetch('');
 // }
-const obtenerPcias = async (provincia = "") => {
+export const obtenerPcias = async (provincia = "") => {
     try {
         (provincia.trim())
         ?provincia =`?nombre=${provincia}&`
@@ -54,7 +54,7 @@ const obtenerPcias = async (provincia = "") => {
 //     const consulta = fetch('');
 // }
 
-const obtenerDptos = async (departamento = "") => {
+export const obtenerDptos = async (departamento = "") => {
     try {
         (departamento.trim())
         ? departamento = `?provincia=${departamento}&` 
@@ -62,7 +62,7 @@ const obtenerDptos = async (departamento = "") => {
         await retrasar(1391);
         const consulta = await fetch(`https://apis.datos.gob.ar/georef/api/departamentos${departamento}aplanar=true&campos=completo&max=529`)
             .then(res => res.json())
-            .then(respuestaObject => respuestaObject.departamentos )
+            .then(respuestaObject => respuestaObject.departamentos );
         return consulta
     } catch (error) {
         return error
@@ -76,7 +76,7 @@ const obtenerDptos = async (departamento = "") => {
 
 //     const consulta = fetch('');
 // }
-const obtenerLocalidades = async (localidad = "")=>{
+export const obtenerLocalidades = async (localidad = "")=>{
     try {
         (localidad.trim())
         ? localidad = `?nombre=${localidad}&`
@@ -90,7 +90,19 @@ const obtenerLocalidades = async (localidad = "")=>{
         return error;
     }
 }
+export const consultarDatos =  async () => {
+    try {
+        const provincias =await  obtenerPcias();
+        const dptos =await   obtenerDptos();
+        const localidades =await   obtenerLocalidades();
+        const infoDatos = {provincias,dptos,localidades}
+            
+        return infoDatos
+    } catch (error) {
+        return error
+    }
 
+}
 
 //----------------------------------------------------------------------------
 // Funcion para obtener todos los datos
@@ -105,16 +117,6 @@ const obtenerLocalidades = async (localidad = "")=>{
 // }
 
 // consultarDatos();
-    (consultarDatos =  async () => {
-        const provincias = await obtenerPcias();
-        const dptos = await  obtenerDptos();
-        const localidades = await  obtenerLocalidades();
-
-            console.log(provincias);
-            console.log(dptos);
-            console.log(localidades);
-         
-
-    })()
-        
+      
 //----------------------------------------------------------------------------
+
