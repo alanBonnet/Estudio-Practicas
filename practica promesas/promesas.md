@@ -16,3 +16,16 @@ promesaFuncion(parametros)
     .then(respuestaValida => /*Ejemplo: consola devuelvo el resultado*/console.log(respuestaValida) )
     .catch(respuestaError => console.log(respuestaError))
 ```
+## Ahora el caso de async sería asi:
+````js
+const asincrónico = async () => {
+    try{
+        //es utilizado para que el programa se ejecute esperando resultados y los muestre correctamente
+        let resultado = await promesaFuncion(parametros);//usando promesaFuncion(params) como ejemplo
+        return resultado;
+    }catch(error){
+        // en caso de que salga un error, el catch devuelve el reject de alguna promesa
+        return error
+    }
+};
+```
