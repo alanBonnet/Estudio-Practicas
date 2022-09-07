@@ -17,7 +17,7 @@ promesaFuncion(parametros)
     .catch(respuestaError => console.log(respuestaError))
 ```
 ## Ahora el caso de async sería asi:
-````js
+```js
 const asincrónico = async () => {
     try{
         //es utilizado para que el programa se ejecute esperando resultados y los muestre correctamente
