@@ -1,14 +1,15 @@
 const ctrlHome = {};
 
 ctrlHome.getHome = (req, res) => {
+    const {nombre} = req.query
     res.status(200).send({
         mesagge: "Holita rutados peticion GET"
     })
 };
 ctrlHome.postHome = (req, res) => {
-    const {userName,aidi} = req.body;
+    const {userName} = req.body;
     res.json({
-        message: `Peticion POST en home ${userName} ${aidi}`
+        message: `Peticion POST en home ${userName}`
     })
 }
 module.exports = ctrlHome

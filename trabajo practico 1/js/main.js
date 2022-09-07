@@ -25,7 +25,8 @@ ListaFinalInvitados.splice(ListaFinalInvitados.indexOf("Marcela"),1);
 
 console.log(ListaFinalInvitados)
 console.log(ListaFinalInvitados.sort());
-console.log(ListaFinalInvitados.map(e => {return `${e}. Orden: ${ListaFinalInvitados.indexOf(e)+1} `}));
+let i = 1
+console.log(ListaFinalInvitados.map(e => {return `${e} Orden: ${i++} `}));
 
 
 /* Invitados.forEach(e => {return console.log(e.sort())}) */
