@@ -23,7 +23,7 @@
 
 
      const promesaUno = () => promesa;
-    promesaUno(11).then(res => console.log(res)).catch(err=>console.log(err))
+    promesaUno().then(res => console.log(res)).catch(err=>console.log(err))
 //----------------------------------------------------------------
 
     // Promesa dentro en una función.
