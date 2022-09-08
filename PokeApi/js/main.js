@@ -6,10 +6,9 @@ const obtenerPokes = async (poke = "") =>{
         ? ""
         : "";
         let consulta = await fetch(`https://pokeapi.co/api/v2/pokedex/national/`)
-        .then(res => res.json())
-        .then(resObject => resObject.pokemon_entries)
+        const res = await consulta.json()
+        return res.pokemon_entries
 
-        return consulta;
     } catch (error) {
         return error
     }
@@ -21,7 +20,7 @@ const obtenerPokeInfo = async (pokeID,imgOData) => {
         .then(Poke=>{if(imgOData === "img"){
            return Poke.sprites.front_default
         }else if(imgOData === "types"){
-            return Poke.types[0].type.name || Poke.types[1].type.name
+            return [Poke.types[0].type.name , Poke.types[1]?.type.name]
         }})
         
     } catch (error) {
