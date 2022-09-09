@@ -87,9 +87,9 @@ const pintarPokes = async (boolean=false) => {
                 listaPokes.innerHTML += `
             
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-2 mt-5" id="Poke${pokesCant}">
-                    <div class="card p-3 w-auto" >
-                        <img src="${pokeIMGS}" class="card-img-top img-fluid" alt="...">
-                        <div class="card-body">
+                    <div class="card p-3 w-auto border border-dark border-opacity-25 border-5 rounded" >
+                        <img src="${pokeIMGS}" class="card-img-top img-fluid " alt="...">
+                        <div class="card-body p-0 text-center border-top border-4 border-opacity-25">
                             <h5 class="card-title">${capitalizar(nombre)}  </h5>
                             <img src="./img/240px-Pokémon_${capitalizar(pokeInfoType[0])}_Type_Icon.svg.png" class="Poketype" alt="...">
 
@@ -100,7 +100,7 @@ const pintarPokes = async (boolean=false) => {
                             <p class="card-text">
                                 ${capitalizar(pokeInfoType[0])} ${typeof pokeInfoType[1]== "undefined"?"":capitalizar(pokeInfoType[1])}
                             </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="#" class="btn btn-warning">Ver Mas</a>
                         </div>
                     </div>
                 </div>`
