@@ -72,8 +72,8 @@ const pintarPokes = async (boolean=false) => {
     try {
         let resultado = await obtenerPokes();
 
-        listaPokes.innerHTML="";
-        if(boolean){pokesCant=0;limitePokes+=30}else{pokesCant=0;limitePokes=30}
+        
+        if(boolean){limitePokes+=30;}else{pokesCant=0;limitePokes=30;listaPokes.innerHTML="";}
         // este for usa el liminte de pokemones y se maneja por el valor de pokesCant actual
          for(pokesCant;pokesCant<limitePokes;pokesCant++){
             //obtengo las imagenes por cada pokémon
