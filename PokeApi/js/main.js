@@ -1,7 +1,6 @@
 // hago conexiones con html para usar el DOM
 const listaPokes = document.getElementById("listaDePokes");
 const loading = document.getElementById("loading");
-
 // Sirve para caapitalizar una palabra (Vuelve la mayúscula la primera letra)
 const capitalizar = (palabra)=>palabra.replace(/^\w/,(c) => c.toUpperCase());
 
@@ -105,9 +104,10 @@ const pintarPokes = async (boolean=false) => {
             
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-2 mt-5" id="Poke${pokesCant}">
                     <div class="card p-3 w-auto border border-dark border-opacity-25 border-5 rounded" >
-                        <img src="${pokeIMGS}" class="card-img-top img-fluid " alt="...">
+                        <img src="${pokeIMGS}" class="card-img-top img-fluid " id="Img${pokesCant}" alt="..." onclick="agrandarImg('Img${pokesCant}')">
                         <div class="card-body p-0 text-center border-top border-4 border-opacity-25">
                             <h5 class="card-title">${capitalizar(nombre)}  </h5>
+
                             <img src="./img/240px-Pokémon_${capitalizar(pokeInfoType[0])}_Type_Icon.svg.png" class="Poketype" alt="...">
 
                             ${typeof pokeInfoType[1]== "undefined"?"":`
@@ -126,7 +126,8 @@ const pintarPokes = async (boolean=false) => {
          
             if(pokesCant==limitePokes){
                 loading.innerHTML = ``;
-                limpiar12Cartas()
+                limpiar12Cartas();
+                
             }
             
             
@@ -137,13 +138,17 @@ const pintarPokes = async (boolean=false) => {
         console.log(error)
     }
 }
-pintarPokes()
+pintarPokes();
 
 
 
 // animaciones:
-
-/* let TopCardImg = document.querySelectorAll(".card-img-top");
- const agrandarImg = selector => {
-    
- } */
+const agrandarImg = (id) =>{
+    let imagen = document.getElementById(id);
+    let estilo = "transition: all 1s; width:200px"
+    if(imagen.style.width != "200px"){
+        imagen.style =estilo
+    }else{
+        imagen.style = "transition:all 1s; width:150px;"
+    }
+}
