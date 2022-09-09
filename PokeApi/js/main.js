@@ -87,8 +87,10 @@ const pintarPokes = async (boolean=false) => {
             </div>`;cargar12Cartas()
 
         }else{
-            pokesCant=0;limitePokes=30;pokesCant==limitePokes?listaPokes.innerHTML="":cargar12Cartas();
+            pokesCant=0;limitePokes=30;(pokesCant==limitePokes)?listaPokes.innerHTML="":cargar12Cartas();
         }
+
+
         // este for usa el liminte de pokemones y se maneja por el valor de pokesCant actual
          for(pokesCant;pokesCant<limitePokes;pokesCant++){
             //obtengo las imagenes por cada pokémon
@@ -136,3 +138,12 @@ const pintarPokes = async (boolean=false) => {
     }
 }
 pintarPokes()
+
+
+
+// animaciones:
+
+/* let TopCardImg = document.querySelectorAll(".card-img-top");
+ const agrandarImg = selector => {
+    
+ } */
