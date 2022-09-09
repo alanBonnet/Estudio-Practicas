@@ -39,32 +39,39 @@ const obtenerPokeInfo = async (pokeID,imgOData) => {
 
 let pokesCant = 0;
 let limitePokes = 30;
+
 // con este for renderizo tarjetas simulando que carga la página mientras carga la información
 // donde solo renderizo 12 tarjetas
-    for(let i=0;i<12;i++){
-        listaPokes.innerHTML += `
-        <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-2 mt-5">
-                        
-                        
-        <div class="card" aria-hidden="true">
-                <img src="..." class="card-img-top "  alt="">
-                <div class="card-body">
-                    <h5 class="card-title placeholder-glow">
-                    <span class="placeholder col-6">1111111111111111111111</span>
-                    </h5>
-                    <p class="card-text placeholder-glow">
-                    <span class="placeholder col-7">111111111111111</span>
-                    <span class="placeholder col-4">11111111111</span>
-                    <span class="placeholder col-4">1111111111</span>
-                    <span class="placeholder col-6">11111111111111</span>
-                    <span class="placeholder col-8">111111111111</span>
-                    </p>
-                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+    const cargar12Cartas = () => {
+        for(let i=0;i<12;i++){
+            listaPokes.innerHTML += `
+            <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-2 mt-5" id="CardCargando${i}">
+                            
+                            
+            <div class="card" aria-hidden="true">
+                    <img src="..." class="card-img-top "  alt="">
+                    <div class="card-body">
+                        <h5 class="card-title placeholder-glow">
+                        <span class="placeholder col-6">1111111111111111111111</span>
+                        </h5>
+                        <p class="card-text placeholder-glow">
+                        <span class="placeholder col-7">111111111111111</span>
+                        <span class="placeholder col-4">11111111111</span>
+                        <span class="placeholder col-4">1111111111</span>
+                        <span class="placeholder col-6">11111111111111</span>
+                        <span class="placeholder col-8">111111111111</span>
+                        </p>
+                        <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                    </div>
                 </div>
-            </div>
-        </div>`
+            </div>`;
+        }
     }
-    
+    const limpiar12Cartas = () => {
+        for(let i=0;i<12;i++){
+            document.getElementById(`CardCargando${i}`).innerHTML = ""
+        }
+    }
 // con esta fnAsync pinto las tarjetas de los pokemones
 // el parámetro que recibe por defecto es false y quiere decir que si se usa la fn
 // es como si se reiniciara la página, en caso de true recarga la página pero con más pokemones(nuevo límite +30)
@@ -76,9 +83,10 @@ const pintarPokes = async (boolean=false) => {
         if(boolean){limitePokes+=30;loading.innerHTML=`
             <div class="spinner-border  mt-5 fs-1 " role="status" >
                 <span class="visually-hidden">Loading...</span>
-            </div>`
+            </div>`;
+
         }else{
-            pokesCant=0;limitePokes=30;listaPokes.innerHTML="";
+            pokesCant=0;limitePokes=30;pokesCant==limitePokes?listaPokes.innerHTML="":cargar12Cartas();
         }
         // este for usa el liminte de pokemones y se maneja por el valor de pokesCant actual
          for(pokesCant;pokesCant<limitePokes;pokesCant++){
@@ -115,6 +123,7 @@ const pintarPokes = async (boolean=false) => {
          
             if(pokesCant==limitePokes){
                 loading.innerHTML = ``;
+                limpiar12Cartas()
             }
             
             
