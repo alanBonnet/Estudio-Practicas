@@ -73,7 +73,13 @@ const pintarPokes = async (boolean=false) => {
         let resultado = await obtenerPokes();
 
         
-        if(boolean){limitePokes+=30;}else{pokesCant=0;limitePokes=30;listaPokes.innerHTML="";}
+        if(boolean){limitePokes+=30;loading.innerHTML=`
+            <div class="spinner-border  mt-5 fs-1 " role="status" >
+                <span class="visually-hidden">Loading...</span>
+            </div>`
+        }else{
+            pokesCant=0;limitePokes=30;listaPokes.innerHTML="";
+        }
         // este for usa el liminte de pokemones y se maneja por el valor de pokesCant actual
          for(pokesCant;pokesCant<limitePokes;pokesCant++){
             //obtengo las imagenes por cada pokémon
@@ -106,11 +112,13 @@ const pintarPokes = async (boolean=false) => {
                 </div>`
          }
          //limpio el innerHTML de la animación de "cargando..."
-         setTimeout(()=>{
-            loading.innerHTML = ``;
+         
+            if(pokesCant==limitePokes){
+                loading.innerHTML = ``;
+            }
             
             
-         },3000)
+         
 
          
     } catch (error) {
